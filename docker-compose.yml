@@ -1,0 +1,8 @@
+version: '3.7'
+
+services:
+  ioc:
+    build:
+      args:
+        TERRAFORM_VERSION: ${TERRAFORM_VERSION}
+      context: ./terraform
