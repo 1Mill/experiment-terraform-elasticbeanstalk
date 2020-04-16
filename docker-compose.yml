@@ -23,7 +23,7 @@ services:
     volumes:
       - database_volume:/var/lib/postgresql/data
 
-  ioc:
+  terraform:
     build:
       args:
         TERRAFORM_VERSION: ${TERRAFORM_VERSION}
