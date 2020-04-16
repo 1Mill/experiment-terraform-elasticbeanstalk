@@ -28,6 +28,8 @@ services:
       args:
         TERRAFORM_VERSION: ${TERRAFORM_VERSION}
       context: ./terraform
+    volumes:
+      - ${AWS_CREDENTIALS_PATH}:/root/.aws
 
 volumes:
   database_volume: {}
