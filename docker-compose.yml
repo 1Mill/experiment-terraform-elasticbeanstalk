@@ -16,7 +16,7 @@ services:
       - ./src:/app
 
   database:
-    image: postgres:11-alpine
+    image: postgres:11.6-alpine
     environment:
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       POSTGRES_USER: ${DATABASE_USERNAME}
@@ -32,6 +32,9 @@ services:
     environment:
       TF_VAR_AWS_PROFILE: ${AWS_PROFILE}
       TF_VAR_AWS_REGION: ${AWS_REGION}
+      TF_VAR_DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      TF_VAR_DATABASE_USERNAME: ${DATABASE_USERNAME}
+      TF_VAR_PROJECT_NAME: ${PROJECT_NAME}
     volumes:
       - ${AWS_CREDENTIALS_PATH}:/root/.aws
 
