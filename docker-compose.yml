@@ -23,6 +23,7 @@ services:
     volumes:
       - database_volume:/var/lib/postgresql/data
 
+  # --- Infastructure as code ---
   terraform:
     build:
       args:
