@@ -8,7 +8,7 @@ RUN apk update && apk add \
 WORKDIR /app
 
 COPY Gemfile* ./
-RUN bundle install
+RUN gem install bundler && bundle install
 
 COPY . .
 
