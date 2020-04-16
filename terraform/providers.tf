@@ -1,9 +1,7 @@
-// ! Replace with  your AWS Profile
 variable "aws_profile" {
 	type = string
 }
 
-// ! Replace with your prefered AWS region
 variable "aws_region" {
 	type = string
 }
