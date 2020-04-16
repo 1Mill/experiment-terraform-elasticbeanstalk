@@ -1,14 +1,14 @@
-variable "aws_profile" {
+variable "AWS_PROFILE" {
 	type = string
 }
 
-variable "aws_region" {
+variable "AWS_REGION" {
 	type = string
 }
 
 provider "aws" {
-	profile = var.aws_profile
-	region = var.aws_region
+	profile = var.AWS_PROFILE
+	region = var.AWS_REGION
 	shared_credentials_file = "/root/.aws"
 	version = "~> 2.57"
 }

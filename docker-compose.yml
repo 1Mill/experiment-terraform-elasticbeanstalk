@@ -30,8 +30,8 @@ services:
         TERRAFORM_VERSION: ${TERRAFORM_VERSION}
       context: ./terraform
     environment:
-      TF_VAR_aws_profile: ${AWS_PROFILE}
-      TF_VAR_aws_region: ${AWS_REGION}
+      TF_VAR_AWS_PROFILE: ${AWS_PROFILE}
+      TF_VAR_AWS_REGION: ${AWS_REGION}
     volumes:
       - ${AWS_CREDENTIALS_PATH}:/root/.aws
 
