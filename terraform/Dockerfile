@@ -11,4 +11,7 @@ RUN rm terraform_${TERRAFORM_VERSION}_linux_386.zip
 WORKDIR /app
 COPY *.tf ./
 
+ENV TF_VAR_aws_profile ${TF_VAR_aws_profile}
+ENV TF_VAR_aws_region ${TF_VAR_aws_region}
+
 CMD [ "terraform", "--version" ]

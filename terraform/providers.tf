@@ -1,12 +1,10 @@
 // ! Replace with  your AWS Profile
 variable "aws_profile" {
-	default = "terraform"
 	type = string
 }
 
 // ! Replace with your prefered AWS region
 variable "aws_region" {
-	default = "us-east-1"
 	type = string
 }
 
