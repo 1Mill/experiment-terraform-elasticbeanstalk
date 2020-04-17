@@ -24,4 +24,5 @@ resource "aws_db_instance" "database" {
 	auto_minor_version_upgrade = true
 	instance_class = "db.t3.micro"
 	max_allocated_storage = 1000
+	skip_final_snapshot = true
 }
