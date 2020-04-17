@@ -1,11 +1,9 @@
 variable "AWS_PROFILE" {
 	type = string
 }
-
 variable "AWS_REGION" {
 	type = string
 }
-
 provider "aws" {
 	profile = var.AWS_PROFILE
 	region = var.AWS_REGION
