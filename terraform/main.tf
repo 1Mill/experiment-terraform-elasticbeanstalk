@@ -10,3 +10,13 @@ resource "aws_elastic_beanstalk_environment" "env" {
 	solution_stack_name = "64bit Amazon Linux 2018.03 v2.11.4 running Ruby 2.6 (Puma)"
 	tier= "WebServer"
 }
+
+
+data "archive_file" "dist" {
+	output_path = "dist.zip"
+	source_dir = "./src"
+	type = "zip"
+}
+resource "aws_s3_bucket" "app" {
+	bucket = "${var.PROJECT_NAME}-app"
+}
