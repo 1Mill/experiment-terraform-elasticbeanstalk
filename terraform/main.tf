@@ -18,6 +18,7 @@ variable "DIST_PATH" {
 }
 data "archive_file" "dist" {
 	output_path = var.DIST_PATH
+
 	source_dir = "./src"
 	type = "zip"
 }
