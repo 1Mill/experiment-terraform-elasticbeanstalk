@@ -40,13 +40,13 @@ resource "aws_security_group" "database" {
 		to_port = var.DATABASE_PORT
 
 		cidr_blocks = ["0.0.0.0/0"]
-		protocal = "tcp"
+		protocol = "tcp"
 	}
 
 	egress {
 		cidr_blocks = ["0.0.0.0/0"]
 		from_port = 0
-		protocal = "-1"
+		protocol = "-1"
 		to_port = 0
 	}
 }
