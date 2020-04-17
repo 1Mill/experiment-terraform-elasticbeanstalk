@@ -7,8 +7,6 @@
     - Other rails files
   - terraform: .tf files
     - Dockerfile
-    - state: Remote state setup
-    - *tf files for Ruby on Rails
+    - *tf files for Ruby on Rails and database
   - docker-comopse.yml
-  - docker-compse.tf.yml
   - .env
