@@ -16,7 +16,7 @@ variable "PROJECT_NAME"{
 resource "aws_db_instance" "database" {
 	engine = var.DATABASE_ENGINE
 	engine_version = var.DATABASE_ENGINE_VERSION
-	name = "${var.PROJECT_NAME}_database"
+	identifier = "${var.PROJECT_NAME}-database"
 	password = var.DATABASE_PASSWORD
 	username = var.DATABASE_USERNAME
 
