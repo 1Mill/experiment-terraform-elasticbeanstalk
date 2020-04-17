@@ -12,11 +12,20 @@ resource "aws_elastic_beanstalk_environment" "env" {
 }
 
 
+variable "DIST_PATH" {
+	default = "dist.zip"
+	type = string
+}
 data "archive_file" "dist" {
-	output_path = "dist.zip"
+	output_path = var.DIST_PATH
 	source_dir = "./src"
 	type = "zip"
 }
 resource "aws_s3_bucket" "app" {
 	bucket = "${var.PROJECT_NAME}-app"
+}
+resource "aws_s3_bucket_object" "app" {
+	bucket = aws_s3_bucket.app.id
+	key="app.zip"
+	source = var.DIST_PATH
 }
