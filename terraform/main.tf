@@ -23,13 +23,13 @@ resource "aws_elastic_beanstalk_environment" "env" {
 		value = aws_key_pair.generated_key.key_name
 	}
 }
-resource "tls_private_key" "example" {
-	algorithm = "RSA"
-	rsa_bits  = 4096
-}
 resource "aws_key_pair" "generated_key" {
 	key_name = "${var.PROJECT_NAME}-SSH-key"
 	public_key = tls_private_key.example.public_key_openssh
+}
+resource "tls_private_key" "example" {
+	algorithm = "RSA"
+	rsa_bits  = 4096
 }
 
 // Create application version to run on Elasticbeanstalk application
