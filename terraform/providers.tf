@@ -10,3 +10,7 @@ provider "aws" {
 	shared_credentials_file = "/root/.aws"
 	version = "~> 2.57"
 }
+
+provider "archive" {
+	version = "~> 1.3"
+}
