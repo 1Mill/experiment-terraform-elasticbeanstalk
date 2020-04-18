@@ -10,3 +10,7 @@
     - *tf files for Ruby on Rails and database
   - docker-comopse.yml
   - .env
+
+
+# Articles
+https://awsfeed.com/whats-new/compute/introducing-a-new-generation-of-aws-elastic-beanstalk-platforms/
