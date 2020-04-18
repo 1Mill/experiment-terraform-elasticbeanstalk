@@ -9,7 +9,7 @@ RUN apk update && apk add \
 WORKDIR /app
 
 COPY Gemfile* ./
-RUN gem install bundler -v "~> 2.1.4" && bundle install
+RUN gem update --system 3.1.2 && gem install bundler -v "~> 2.1.4" && bundle install
 
 COPY . .
 
