@@ -7,10 +7,11 @@ variable "AWS_REGION" {
 provider "aws" {
 	profile = var.AWS_PROFILE
 	region = var.AWS_REGION
+
 	shared_credentials_file = "/root/.aws"
 	version = "~> 2.57"
 }
 
-provider "archive" {
-	version = "~> 1.3"
+provider "tls" {
+	version = "~> 2.1"
 }
