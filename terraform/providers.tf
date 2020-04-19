@@ -9,7 +9,7 @@ provider "aws" {
 	region = var.AWS_REGION
 
 	shared_credentials_file = "/root/.aws"
-	version = "~> 2.57"
+	version = "~> 2.58"
 }
 
 provider "tls" {
