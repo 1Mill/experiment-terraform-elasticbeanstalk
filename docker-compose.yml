@@ -42,5 +42,12 @@ services:
       - ${AWS_CREDENTIALS_PATH}:/root/.aws
       - ./src:/app/src
 
+  # --- Experimental -
+  zip:
+    build: zip
+    volumes:
+      - ./src:/app/src
+      - ./zip:/app
+
 volumes:
   database_volume: {}
