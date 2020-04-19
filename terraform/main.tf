@@ -15,6 +15,11 @@ resource "aws_elastic_beanstalk_environment" "env" {
 		namespace = "aws:autoscaling:launchconfiguration"
 		value = aws_key_pair.generated_key.key_name
 	}
+	setting {
+		name = "InstanceTypes"
+		namespace = "aws:ec2:instances"
+		value = "t3.micro"
+	}
 }
 resource "aws_key_pair" "generated_key" {
 	key_name = "${var.PROJECT_NAME}-SSH-key"
