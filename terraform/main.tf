@@ -31,12 +31,12 @@ resource "aws_elastic_beanstalk_environment" "env" {
 	setting {
 		name = "RACK_ENV"
 		namespace = "aws:elasticbeanstalk:application:environment"
-		value = "development"
+		value = "production"
 	}
 	setting {
 		name = "BUNDLE_WITHOUT"
 		namespace = "aws:elasticbeanstalk:application:environment"
-		value = ""
+		value = "test"
 	}
 }
 resource "aws_key_pair" "generated_key" {
