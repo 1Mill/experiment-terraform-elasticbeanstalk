@@ -10,6 +10,7 @@ resource "aws_elastic_beanstalk_environment" "env" {
 	solution_stack_name = "64bit Amazon Linux 2018.03 v2.11.4 running Ruby 2.6 (Puma)"
 	tier= "WebServer"
 
+	// Instance
 	setting {
 		name = "EC2KeyName"
 		namespace = "aws:autoscaling:launchconfiguration"
@@ -19,6 +20,23 @@ resource "aws_elastic_beanstalk_environment" "env" {
 		name = "InstanceTypes"
 		namespace = "aws:ec2:instances"
 		value = "t3.micro"
+	}
+
+	// Environmental varaibles
+	setting {
+		name = "SECRET_KEY_BASE"
+		namespace = "aws:elasticbeanstalk:application:environment"
+		value = "TODO: SOME RANDOM VALUE"
+	}
+	setting {
+		name = "RACK_ENV"
+		namespace = "aws:elasticbeanstalk:application:environment"
+		value = "development"
+	}
+	setting {
+		name = "BUNDLE_WITHOUT"
+		namespace = "aws:elasticbeanstalk:application:environment"
+		value = ""
 	}
 }
 resource "aws_key_pair" "generated_key" {
