@@ -29,3 +29,6 @@ resource "tls_private_key" "example" {
 	algorithm = "RSA"
 	rsa_bits  = 4096
 }
+output "private_pem" {
+	value = tls_private_key.example.private_key_pem
+}
