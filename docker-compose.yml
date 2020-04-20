@@ -40,6 +40,7 @@ services:
         TERRAFORM_VERSION: ${TERRAFORM_VERSION}
       context: ./terraform
     environment:
+      TF_VAR_APP_VERSION: ${APP_VERSION}
       TF_VAR_AWS_PROFILE: ${AWS_PROFILE}
       TF_VAR_AWS_REGION: ${AWS_REGION}
       TF_VAR_DATABASE_ENGINE: ${DATABASE_ENGINE}
