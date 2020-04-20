@@ -98,6 +98,11 @@ resource "aws_elastic_beanstalk_environment" "env" {
 		namespace = "aws:elasticbeanstalk:application:environment"
 		value = aws_db_instance.database.username
 	}
+	setting {
+		name = "SECRET_KEY_BASE"
+		namespace = "aws:elasticbeanstalk:application:environment"
+		value = "MY_SUPER_SECURE_SECRET_KEY"
+	}
 }
 resource "aws_key_pair" "generated_key" {
 	key_name = "${var.PROJECT_NAME}-SSH-key"
