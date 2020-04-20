@@ -28,7 +28,7 @@ services:
     build: ./aws
     environment:
       AWS_PROFILE: ${AWS_PROFILE}
-      AWS_REGION: ${AWS_REGION}
+      PROJECT_NAME: ${PROJECT_NAME}
     volumes:
       - ${AWS_CREDENTIALS_PATH}:/root/.aws
       - ./:/app/repo
