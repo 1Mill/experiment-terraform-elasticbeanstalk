@@ -24,11 +24,6 @@ resource "aws_elastic_beanstalk_environment" "env" {
 
 	// Environmental varaibles
 	setting {
-		name = "SECRET_KEY_BASE"
-		namespace = "aws:elasticbeanstalk:application:environment"
-		value = "TODO: SOME RANDOM VALUE"
-	}
-	setting {
 		name = "RACK_ENV"
 		namespace = "aws:elasticbeanstalk:application:environment"
 		value = "production"
@@ -41,9 +36,9 @@ resource "aws_elastic_beanstalk_environment" "env" {
 }
 resource "aws_key_pair" "generated_key" {
 	key_name = "${var.PROJECT_NAME}-SSH-key"
-	public_key = tls_private_key.example.public_key_openssh
+	public_key = tls_private_key.generated_key.public_key_openssh
 }
-resource "tls_private_key" "example" {
+resource "tls_private_key" "generated_key" {
 	algorithm = "RSA"
 	rsa_bits  = 4096
 }
