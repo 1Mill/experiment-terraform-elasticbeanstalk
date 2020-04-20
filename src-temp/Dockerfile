@@ -1,4 +1,4 @@
-FROM ruby:2.6-alpine
+FROM ruby:2.6.5-alpine
 
 RUN apk update && apk add \
 	build-base \
@@ -9,7 +9,7 @@ RUN apk update && apk add \
 WORKDIR /app
 
 COPY Gemfile* ./
-RUN gem update --system 3.1.2 && gem install bundler -v "~> 2.1.4" && bundle install
+RUN gem install bundler -v "~> 1.17.3" && bundle install
 
 COPY . .
 
