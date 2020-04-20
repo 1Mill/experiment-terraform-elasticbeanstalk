@@ -23,6 +23,16 @@ services:
     volumes:
       - database_volume:/var/lib/postgresql/data
 
+  # --- Countionus Delivery ---
+  aws:
+    build: ./aws
+    environment:
+      AWS_PROFILE: ${AWS_PROFILE}
+      AWS_REGION: ${AWS_REGION}
+    volumes:
+      - ${AWS_CREDENTIALS_PATH}:/root/.aws
+      - ./:/app/repo
+
   # --- Infastructure as Code ---
   terraform:
     build:
@@ -40,7 +50,6 @@ services:
       TF_VAR_PROJECT_NAME: ${PROJECT_NAME}
     volumes:
       - ${AWS_CREDENTIALS_PATH}:/root/.aws
-      - ./src:/app/src
 
 volumes:
   database_volume: {}
