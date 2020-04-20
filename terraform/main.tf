@@ -49,7 +49,7 @@ resource "aws_elastic_beanstalk_environment" "env" {
 	setting {
 		name = "RollingUpdateEnabled"
 		namespace = "aws:autoscaling:updatepolicy:rollingupdate"
-		value = "true"
+		value = "false"
 	}
 	setting {
 		name = "SecurityGroups"
