@@ -73,6 +73,26 @@ resource "aws_elastic_beanstalk_environment" "env" {
 		namespace = "aws:elasticbeanstalk:application:environment"
 		value = "false"
 	}
+	setting {
+		name = "DATABASE_HOST"
+		namespace = "aws:elasticbeanstalk:application:environment"
+		value = "TODO"
+	}
+	setting {
+		name = "DATABASE_PASSWORD"
+		namespace = "aws:elasticbeanstalk:application:environment"
+		value = "TODO"
+	}
+	setting {
+		name = "DATABASE_PORT"
+		namespace = "aws:elasticbeanstalk:application:environment"
+		value = "TODO"
+	}
+	setting {
+		name = "DATABASE_USERNAME"
+		namespace = "aws:elasticbeanstalk:application:environment"
+		value = "TODO"
+	}
 }
 resource "aws_key_pair" "generated_key" {
 	key_name = "${var.PROJECT_NAME}-SSH-key"
