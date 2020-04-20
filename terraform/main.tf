@@ -1,7 +1,8 @@
+// TODO: This should be seperate deploy-app service,
+// TODO: not part of the provisioning / IaC code.
 resource "aws_s3_bucket" "app" {
 	bucket = "${var.PROJECT_NAME}-app"
 }
-
 variable "DIST_PATH" {
 	default = "dist.zip"
 	type = string
@@ -25,6 +26,7 @@ resource "aws_elastic_beanstalk_application_version" "default" {
 
 	description = "Application version (terraform-managed)"
 }
+// TODO: ---
 
 resource "aws_elastic_beanstalk_application" "eb" {
 	description = "${var.PROJECT_NAME} application (terraform-managed)"
@@ -49,6 +51,21 @@ resource "aws_elastic_beanstalk_environment" "env" {
 		name = "InstanceTypes"
 		namespace = "aws:ec2:instances"
 		value = "t3.micro"
+	}
+	setting {
+		name = "MaxSize"
+		namespace = "aws:autoscaling:asg"
+		value = "4"
+	}
+	setting {
+		name = "MinSize"
+		namespace = "aws:autoscaling:asg"
+		value = "1"
+	}
+	setting {
+		name = "RollingUpdateEnabled"
+		namespace = "aws:autoscaling:updatepolicy:rollingupdate"
+		value = "true"
 	}
 
 	// Environmental varaibles
