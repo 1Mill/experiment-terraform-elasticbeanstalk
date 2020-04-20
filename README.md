@@ -24,6 +24,3 @@ https://awsfeed.com/whats-new/compute/introducing-a-new-generation-of-aws-elasti
 1. Update `.env` files with your published version of `app`
 1. Run `docker-compse up --build terraform` to publish the `app` to to AWS
 1. Run `docker-compse run terraform sh` and then `terraform init && terraform destroy -auto-approve` to destroy all created resources
-
-# TODO
-[ ] Create seperate "deploy-app" service to remove it form provisioning / infastructure-as-code service
