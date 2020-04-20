@@ -1,33 +1,3 @@
-// TODO: This should be seperate deploy-app service,
-// TODO: not part of the provisioning / IaC code.
-// resource "aws_s3_bucket" "app" {
-// 	bucket = "${var.PROJECT_NAME}-app"
-// }
-// variable "DIST_PATH" {
-// 	default = "dist.zip"
-// 	type = string
-// }
-// data "archive_file" "dist" {
-// 	output_path = var.DIST_PATH
-
-// 	source_dir = "./src"
-// 	type = "zip"
-// }
-// resource "aws_s3_bucket_object" "app" {
-// 	bucket = aws_s3_bucket.app.id
-// 	key="${timestamp()}.zip"
-// 	source = var.DIST_PATH
-// }
-// resource "aws_elastic_beanstalk_application_version" "default" {
-// 	application = aws_elastic_beanstalk_application.eb.name
-// 	bucket = aws_s3_bucket.app.id
-// 	key = aws_s3_bucket_object.app.id
-// 	name = timestamp()
-
-// 	description = "Application version (terraform-managed)"
-// }
-// TODO: ---
-
 resource "aws_elastic_beanstalk_application" "eb" {
 	description = "${var.PROJECT_NAME} application (terraform-managed)"
 	name = var.PROJECT_NAME
