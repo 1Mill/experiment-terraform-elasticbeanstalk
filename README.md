@@ -21,3 +21,6 @@ https://awsfeed.com/whats-new/compute/introducing-a-new-generation-of-aws-elasti
 1. Update the `.env` file with your AWS information
 1. Run `docker-compose up --build terrafrom` to build all resources on AWS
 1. Run `docker-compse run terrafrom destroy -auto-approve` to teardown all created resources on AWS
+
+# TODO
+[ ] Create seperate "deploy-app" service to remove it form provisioning / infastructure-as-code service
