@@ -36,7 +36,7 @@ resource "aws_elastic_beanstalk_environment" "env" {
 	setting {
 		name = "BUNDLE_WITHOUT"
 		namespace = "aws:elasticbeanstalk:application:environment"
-		value = "test"
+		value = "test:development"
 	}
 }
 resource "aws_key_pair" "generated_key" {
