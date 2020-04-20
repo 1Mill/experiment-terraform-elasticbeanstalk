@@ -51,6 +51,11 @@ resource "aws_elastic_beanstalk_environment" "env" {
 		namespace = "aws:autoscaling:updatepolicy:rollingupdate"
 		value = "true"
 	}
+	setting {
+		name = "SecurityGroups"
+		namespace = "aws:autoscaling:launchconfiguration"
+		value = aws_security_group.database.name
+	}
 
 	// Environmental varaibles
 	setting {
@@ -76,22 +81,22 @@ resource "aws_elastic_beanstalk_environment" "env" {
 	setting {
 		name = "DATABASE_HOST"
 		namespace = "aws:elasticbeanstalk:application:environment"
-		value = "TODO"
+		value = aws_db_instance.database.address
 	}
 	setting {
 		name = "DATABASE_PASSWORD"
 		namespace = "aws:elasticbeanstalk:application:environment"
-		value = "TODO"
+		value = var.DATABASE_PASSWORD
 	}
 	setting {
 		name = "DATABASE_PORT"
 		namespace = "aws:elasticbeanstalk:application:environment"
-		value = "TODO"
+		value = aws_db_instance.database.port
 	}
 	setting {
 		name = "DATABASE_USERNAME"
 		namespace = "aws:elasticbeanstalk:application:environment"
-		value = "TODO"
+		value = aws_db_instance.database.username
 	}
 }
 resource "aws_key_pair" "generated_key" {
