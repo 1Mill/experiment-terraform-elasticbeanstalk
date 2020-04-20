@@ -33,6 +33,16 @@ resource "aws_elastic_beanstalk_environment" "env" {
 		namespace = "aws:elasticbeanstalk:application:environment"
 		value = "test:development"
 	}
+	setting {
+		name = "RAILS_SKIP_ASSET_COMPILATION"
+		namespace = "aws:elasticbeanstalk:application:environment"
+		value = "false"
+	}
+	setting {
+		name = "RAILS_SKIP_MIGRATIONS"
+		namespace = "aws:elasticbeanstalk:application:environment"
+		value = "false"
+	}
 }
 resource "aws_key_pair" "generated_key" {
 	key_name = "${var.PROJECT_NAME}-SSH-key"
