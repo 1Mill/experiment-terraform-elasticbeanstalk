@@ -14,7 +14,7 @@ data "archive_file" "dist" {
 }
 resource "aws_s3_bucket_object" "app" {
 	bucket = aws_s3_bucket.app.id
-	key="app.zip"
+	key="${timestamp()}.zip"
 	source = var.DIST_PATH
 }
 resource "aws_elastic_beanstalk_application_version" "default" {
