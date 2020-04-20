@@ -12,6 +12,10 @@ provider "aws" {
 	version = "~> 2.58"
 }
 
+provider "archive" {
+	version = "~> 1.3"
+}
+
 provider "tls" {
 	version = "~> 2.1"
 }
