@@ -19,8 +19,5 @@ https://awsfeed.com/whats-new/compute/introducing-a-new-generation-of-aws-elasti
 1. Create a remote state for your local `terraform` service here: https://github.com/1Mill/terraform-create-remote-state
 1. Update `terraform/state.tf` with your remote state information
 1. Update the `.env` file with your AWS information
-1. Run `docker-compose build`
-1. Run `docker-compose run terrafrom sh` to enter the `terraform` service
-1. Inside the `terraform` service, run `terrafrom init && terraform apply`
-1. When prompted, enter `yes` to create the listed resources on AWS
-1. Run `terraform destroy` to teardown all created services
+1. Run `docker-compose up --build terrafrom` to build all resources on AWS
+1. Run `docker-compse run terrafrom destroy -auto-approve` to teardown all created resources on AWS
