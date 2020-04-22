@@ -1,25 +1,10 @@
-variable "DATABASE_ENGINE" {
-	type = string
-}
-variable "DATABASE_ENGINE_VERSION" {
-	type = string
-}
-variable "DATABASE_PASSWORD" {
-	type = string
-}
-variable "DATABASE_PORT" {
-	type = string
-}
-variable "DATABASE_USERNAME" {
-	type = string
-}
-resource "aws_db_instance" "database" {
+resource "aws_db_instance" "default" {
 	engine = var.DATABASE_ENGINE
 	engine_version = var.DATABASE_ENGINE_VERSION
 	identifier = "${var.PROJECT_NAME}-database"
 	password = var.DATABASE_PASSWORD
 	username = var.DATABASE_USERNAME
-	vpc_security_group_ids = [aws_security_group.database.id]
+	vpc_security_group_ids = [aws_security_group.default.id]
 
 	allocated_storage = 100
 	auto_minor_version_upgrade = true
@@ -28,8 +13,8 @@ resource "aws_db_instance" "database" {
 	name = "production"
 	skip_final_snapshot = true
 }
-resource "aws_security_group" "database" {
-	description = "RDS ${var.DATABASE_ENGINE} sg (terraform-managed)"
+resource "aws_security_group" "default" {
+	description = "Database ${var.DATABASE_ENGINE} security group (terraform-managed)"
 	name = "${var.PROJECT_NAME}-database-sg"
 
 	ingress {
@@ -42,8 +27,8 @@ resource "aws_security_group" "database" {
 
 	egress {
 		cidr_blocks = ["0.0.0.0/0"]
-		from_port = 0
 		protocol = "-1"
+		from_port = 0
 		to_port = 0
 	}
 }

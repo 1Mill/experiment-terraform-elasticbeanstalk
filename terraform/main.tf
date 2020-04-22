@@ -1,3 +1,15 @@
+
+module "database" {
+	source = "./modules/database"
+
+	DATABASE_ENGINE = var.DATABASE_ENGINE
+	DATABASE_ENGINE_VERSION = var.DATABASE_ENGINE_VERSION
+	DATABASE_PASSWORD = var.DATABASE_PASSWORD
+	DATABASE_PORT = var.DATABASE_PORT
+	DATABASE_USERNAME = var.DATABASE_USERNAME
+	PROJECT_NAME = var.PROJECT_NAME
+}
+
 variable "APP_VERSION"{
 	type = string
 }
@@ -56,7 +68,7 @@ resource "aws_elastic_beanstalk_environment" "env" {
 	setting {
 		name = "SecurityGroups"
 		namespace = "aws:autoscaling:launchconfiguration"
-		value = aws_security_group.database.name
+		value = module.database.aws_security_group.name
 	}
 
 	// Environmental varaibles
@@ -83,22 +95,22 @@ resource "aws_elastic_beanstalk_environment" "env" {
 	setting {
 		name = "DATABASE_HOST"
 		namespace = "aws:elasticbeanstalk:application:environment"
-		value = aws_db_instance.database.address
+		value = module.database.host
 	}
 	setting {
 		name = "DATABASE_PASSWORD"
 		namespace = "aws:elasticbeanstalk:application:environment"
-		value = var.DATABASE_PASSWORD
+		value = module.database.password
 	}
 	setting {
 		name = "DATABASE_PORT"
 		namespace = "aws:elasticbeanstalk:application:environment"
-		value = aws_db_instance.database.port
+		value = module.database.port
 	}
 	setting {
 		name = "DATABASE_USERNAME"
 		namespace = "aws:elasticbeanstalk:application:environment"
-		value = aws_db_instance.database.username
+		value = module.database.username
 	}
 	setting {
 		name = "SECRET_KEY_BASE"
