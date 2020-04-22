@@ -10,25 +10,25 @@ module "database" {
 	PROJECT_NAME = var.PROJECT_NAME
 }
 
-resource "aws_s3_bucket" "app" {
+resource "aws_s3_bucket" "default" {
 	bucket = "${var.PROJECT_NAME}-app"
 
 	force_destroy = true
 }
 
 resource "aws_elastic_beanstalk_application_version" "default" {
-	application = aws_elastic_beanstalk_application.eb.name
-	bucket = aws_s3_bucket.app.id
+	application = aws_elastic_beanstalk_application.default.name
+	bucket = aws_s3_bucket.default.id
 	key = "${var.APP_VERSION}.zip"
 	name = var.APP_VERSION
 }
 
-resource "aws_elastic_beanstalk_application" "eb" {
+resource "aws_elastic_beanstalk_application" "default" {
 	description = "${var.PROJECT_NAME} application (terraform-managed)"
 	name = var.PROJECT_NAME
 }
-resource "aws_elastic_beanstalk_environment" "env" {
-	application = aws_elastic_beanstalk_application.eb.name
+resource "aws_elastic_beanstalk_environment" "default" {
+	application = aws_elastic_beanstalk_application.default.name
 	description = "${var.PROJECT_NAME} web site (terraform-managed)"
 	version_label = aws_elastic_beanstalk_application_version.default.id
 
@@ -40,7 +40,7 @@ resource "aws_elastic_beanstalk_environment" "env" {
 	setting {
 		name = "EC2KeyName"
 		namespace = "aws:autoscaling:launchconfiguration"
-		value = aws_key_pair.generated_key.key_name
+		value = aws_key_pair.default.key_name
 	}
 	setting {
 		name = "InstanceTypes"
@@ -115,11 +115,11 @@ resource "aws_elastic_beanstalk_environment" "env" {
 		value = "MY_SUPER_SECURE_SECRET_KEY"
 	}
 }
-resource "aws_key_pair" "generated_key" {
+resource "aws_key_pair" "default" {
 	key_name = "${var.PROJECT_NAME}-SSH-key"
-	public_key = tls_private_key.generated_key.public_key_openssh
+	public_key = tls_private_key.default.public_key_openssh
 }
-resource "tls_private_key" "generated_key" {
+resource "tls_private_key" "default" {
 	algorithm = "RSA"
 	rsa_bits  = 4096
 }
