@@ -9,7 +9,7 @@ RUN mv terraform /usr/local/bin/
 RUN rm terraform_${TERRAFORM_VERSION}_linux_386.zip
 
 WORKDIR /app
-COPY entrypoint.sh *.tf ./
+COPY . .
 
 ENV TF_VAR_APP_VERSION ${TF_VAR_APP_VERSION}
 ENV TF_VAR_AWS_PROFILE ${TF_VAR_AWS_PROFILE}
