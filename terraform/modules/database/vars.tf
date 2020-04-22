@@ -1,3 +1,7 @@
+variable "APP_VERSION"{
+	type = string
+}
+
 variable "DATABASE_ENGINE" {
 	type = string
 }
@@ -13,6 +17,7 @@ variable "DATABASE_PORT" {
 variable "DATABASE_USERNAME" {
 	type = string
 }
+
 variable "PROJECT_NAME"{
 	type = string
 }

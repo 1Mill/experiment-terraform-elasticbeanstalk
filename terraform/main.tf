@@ -10,9 +10,6 @@ module "database" {
 	PROJECT_NAME = var.PROJECT_NAME
 }
 
-variable "APP_VERSION"{
-	type = string
-}
 resource "aws_s3_bucket" "app" {
 	bucket = "${var.PROJECT_NAME}-app"
 
