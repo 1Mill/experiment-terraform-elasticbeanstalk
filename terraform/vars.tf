@@ -1,3 +1,7 @@
+variable "APP_VERSION"{
+	type = string
+}
+
 variable "DATABASE_ENGINE" {
 	type = string
 }
