@@ -28,3 +28,9 @@ https://awsfeed.com/whats-new/compute/introducing-a-new-generation-of-aws-elasti
 1. Update the `.env` file to reflect your new release
     * Example: `APP_VERSION=2020-04-22_13-14-15`
 1. Run `docker-compose up --build terraform` to build the AWS resources to deploy the application
+    * Note: This takes some time to complete the first run
+1. Make changes to the `app` service
+1. To deploy your changes:
+    1. Run `docker-compose up --build aws`
+    1. Update `.env` with the new release version
+    1. Run `docker-compse up --build terraform`
