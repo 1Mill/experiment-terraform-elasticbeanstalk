@@ -12,3 +12,6 @@ trim_trailing_whitespace = true
 [*.{config,json,md,yml}]
 indent_size = 2
 indent_style = space
+
+[*.pem]
+end_of_line = lf
