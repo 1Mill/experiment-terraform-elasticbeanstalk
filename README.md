@@ -34,3 +34,8 @@ https://awsfeed.com/whats-new/compute/introducing-a-new-generation-of-aws-elasti
     1. Run `docker-compose up --build aws`
     1. Update `.env` with the new release version
     1. Run `docker-compse up --build terraform`
+1. To destroy all created AWS resources:
+    1. Run `docker-compose build terraform`
+    1. Run `docker-compse run terraform sh`
+    1. Run `terraform init && terraform destroy -auto-approve`
+        * Note: This takes some time to complete
